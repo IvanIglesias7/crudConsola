@@ -25,6 +25,7 @@ public class app {
 				cs.insert(c.conexion());
 				break;
 			case 2:
+				cs.modificar(c.conexion());
 				break;
 			case 3:
 				break;

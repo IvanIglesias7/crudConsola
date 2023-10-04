@@ -11,11 +11,11 @@ public class libro {
 	int id_libro;
 	String titulo;
 	String autor;
-	String isbn;
+	long isbn;
 	int edicion;
 	
 	//Constructor
-	public libro(int id_libro, String titulo, String autor, String isbn, int edicion) {
+	public libro(int id_libro, String titulo, String autor, int isbn, int edicion) {
 		super();
 		this.id_libro = id_libro;
 		this.titulo = titulo;
@@ -23,7 +23,15 @@ public class libro {
 		this.isbn = isbn;
 		this.edicion = edicion;
 	}
-	
+	 
+	public libro(String titulo, String autor, int isbn, int edicion) {
+		super();
+		this.titulo = titulo;
+		this.autor = autor;
+		this.isbn = isbn;
+		this.edicion = edicion;
+	}
+
 	public libro() {}
 
 	//Getters & Setters
@@ -51,12 +59,12 @@ public class libro {
 		this.autor = autor;
 	}
 
-	public String getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public void setIsbn(long l) {
+		this.isbn = l;
 	}
 
 	public int getEdicion() {

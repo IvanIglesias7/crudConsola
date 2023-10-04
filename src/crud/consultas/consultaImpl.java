@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import crud.DAO.libro;
+import crud.DAO.libroImpl;
 import crud.DTO.libroDTO;
 import crud.DTO.libroDTOImpl;
 
@@ -43,10 +45,13 @@ public void selectAll(Connection con) {
 		
 		boolean continuar= false;
 		Scanner scan = new Scanner(System.in);
+		libroImpl libS = new libroImpl();
 		
 		do {
 			System.out.println("Introduzca los valores deseados para insertar.");
-			libroDTO libroDTO = libDTOS.preguntaLibro();
+			libro lib = new libro(); 
+			lib = libS.libroDTOaDAO(libDTOS.preguntaLibro());
+			
 			
 			PreparedStatement pst; //statement con parámetros.
 			try {
@@ -54,10 +59,10 @@ public void selectAll(Connection con) {
 						+ "	id_libro, titulo, autor, isbn, edicion)\r\n"
 						+ "	VALUES (DEFAULT, ?, ?, ?, ?);");
 				
-				pst.setString(1, libroDTO.getTitulo()); //asigno a cada ? su correspondiente propiedad
-				pst.setString(2, libroDTO.getAutor());
-				pst.setInt(3, libroDTO.getIsbn());
-				pst.setInt(4, libroDTO.getEdicion());
+				pst.setString(1, lib.getTitulo()); //asigno a cada ? su correspondiente propiedad
+				pst.setString(2, lib.getAutor());
+				pst.setLong(3, lib.getIsbn());
+				pst.setInt(4, lib.getEdicion());
 				
 				pst.execute(); //ejecutamos la query entera	
 				
@@ -67,5 +72,15 @@ public void selectAll(Connection con) {
 			}
 		} while (continuar == true);
 	}
+
+	@Override
+	public void modificar(Connection conexion) {
+		
+		
+	}
+
+	
+
+
 	
 }

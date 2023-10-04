@@ -18,10 +18,14 @@ public class libroDTOImpl implements libroDTOService {
                 libDTO.setId_libro(rs.getInt("id_libro"));
                 libDTO.setTitulo(rs.getString("titulo"));
                 libDTO.setAutor(rs.getString("autor"));
-                libDTO.setIsbn(rs.getInt("isbn"));
+
+                // Cambia la línea siguiente para manejar el ISBN como un long
+                long isbn = rs.getLong("isbn");
+                libDTO.setIsbn(isbn);
+
                 libDTO.setEdicion(rs.getInt("edicion"));
 
-                System.out.println(libDTO.toString());  // Muestro resultados
+                System.out.println(libDTO.toString());  // Muestra resultados
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -29,6 +33,7 @@ public class libroDTOImpl implements libroDTOService {
         return libDTO;
 
     }
+
 
     public libroDTO preguntaLibro() {
 

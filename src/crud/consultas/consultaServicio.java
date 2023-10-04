@@ -10,5 +10,8 @@ public interface consultaServicio {
 		
 		//Hace un insert a bd
 		public void insert(Connection con);
+
+		//Modifica 1 libro
+		public void modificar(Connection conexion);
 	}
 

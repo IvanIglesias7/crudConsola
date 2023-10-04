@@ -11,11 +11,11 @@ public class libroDTO {
 	int id_libro;
 	String titulo;
 	String autor;
-	int isbn;
+	long isbn;
 	int edicion;
 	
 	//Constructor
-	public libroDTO(int id_libro, String titulo, String autor, int isbn, int edicion) {
+	public libroDTO(int id_libro, String titulo, String autor, long isbn, int edicion) {
 		super();
 		this.id_libro = id_libro;
 		this.titulo = titulo;
@@ -51,11 +51,11 @@ public class libroDTO {
 		this.autor = autor;
 	}
 
-	public int getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
 	}
 
