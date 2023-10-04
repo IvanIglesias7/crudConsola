@@ -1,7 +1,5 @@
 package crud.app;
 
-import java.sql.Connection;
-
 import crud.conexion.*;
 import crud.consultas.consultaImpl;
 import crud.consultas.consultaServicio;
@@ -24,7 +22,7 @@ public class app {
 			switch(opcion) {
 			
 			case 1:
-				
+				cs.insert(c.conexion());
 				break;
 			case 2:
 				break;
