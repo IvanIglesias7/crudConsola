@@ -11,6 +11,7 @@ import crud.DAO.libro;
 import crud.DAO.libroImpl;
 import crud.DTO.libroDTO;
 import crud.DTO.libroDTOImpl;
+import crud.util.util;
 
 public class consultaImpl implements consultaServicio {
 
@@ -76,7 +77,56 @@ public void selectAll(Connection con) {
 	@Override
 	public void modificar(Connection conexion) {
 		
+		System.out.println("Estos son los libros que hay actualmente: ");
+		selectAll(conexion);
+		try {
+			long isbn = util.getIsbnLibro();
+			PreparedStatement pst;
+			String consulta = "UPDATE gbp_almacen.gbp_alm_cat_libros"
+					+ "	SET id_libro=DEFAULT, titulo=?, autor=?, isbn=?, edicion=?\r\n"
+					+ "	WHERE isbn = ?;";
+			pst = conexion.prepareStatement(consulta);
+			
+			libroDTO lib = libDTOS.preguntaLibro();
+			pst.setString(1, lib.getTitulo());
+			pst.setString(2, lib.getAutor());
+			pst.setLong(3, lib.getIsbn());
+			pst.setInt(4, lib.getEdicion());
+			pst.setLong(5, isbn);
+			
+			pst.execute();
+			
+			System.out.println("El libro : " + lib.getTitulo() + " ha sido modificado");
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
+	@Override
+	public void eliminar(Connection conexion) {
 		
+		System.out.println("Estos son los libros que hay actualmente: ");
+		selectAll(conexion);
+		
+		try {
+			
+			long isbn = util.getIsbnLibro();
+			PreparedStatement pst;
+			String consulta = "DELETE FROM gbp_almacen.gbp_alm_cat_libros"
+					+ "	WHERE isbn = ?;";
+			pst = conexion.prepareStatement(consulta);
+			
+			System.out.println("El libro con isbn " + isbn + " va a ser eliminado.");
+			pst.setLong(1, isbn);
+
+			System.out.println("Listo!");
+			pst.execute();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	

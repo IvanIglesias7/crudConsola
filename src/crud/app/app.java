@@ -28,6 +28,7 @@ public class app {
 				cs.modificar(c.conexion());
 				break;
 			case 3:
+				cs.eliminar(c.conexion());
 				break;
 			case 4:
 				cs.selectAll(c.conexion());

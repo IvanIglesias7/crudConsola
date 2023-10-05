@@ -11,7 +11,10 @@ public interface consultaServicio {
 		//Hace un insert a bd
 		public void insert(Connection con);
 
-		//Modifica 1 libro
+		//Modifica 1 libro por su isbn
 		public void modificar(Connection conexion);
+		
+		//Elimina el libro deseado por su isbn
+		public void eliminar(Connection conexion);
 	}
 

@@ -23,11 +23,23 @@ public class util {
 				System.out.println("Eso no es un número");
 				scan.next();//Así recoge otro registro en vez de quedarse en bucle.
 			}
-	
-		
+
 		int opcion = scan.nextInt();
 		return opcion;
 		
+	}
+	
+	static public long getIsbnLibro() {
+		
+		System.out.println("Dime el isbn del libro");
+		while(!scan.hasNextLong()) {
+			System.out.println("Eso no tiene pinta de isbn");
+			scan.nextLine();
+			}
+		long isbn = scan.nextLong();
+		
+		
+		return isbn;
 	}
 	
 	
